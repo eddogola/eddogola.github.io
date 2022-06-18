@@ -4,7 +4,7 @@ Submitted by: **Eddy Onyango**
 
 Estimated time spent: **6** hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://eddogola.github.io/)
 
 ### Application Features
 
