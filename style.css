@@ -1,0 +1,14 @@
+body {
+    margin: 2% 5%;
+    font-family: 'Quattrocento', serif;
+    font-size: large;
+}
+
+strong {
+    font-style: normal;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+ul {
+    list-style-type: lower-greek;
+}
