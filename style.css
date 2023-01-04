@@ -1,7 +1,7 @@
 body {
     margin: 2% 5%;
     font-family: 'Quattrocento', serif;
-    font-size: large;
+    font-size: 1.2em;
 }
 
 strong {
@@ -11,4 +11,13 @@ strong {
 
 ul {
     list-style-type: lower-greek;
+}
+
+a, a:visited {
+    color: #473534;
+}
+
+#home-link {
+    font-size: 1.2em;
+    color: #224066;
 }
