@@ -14,10 +14,12 @@ ul {
 }
 
 a, a:visited {
-    color: #473534;
+    /* color: #473534; */
+    color: red;
 }
 
 #home-link {
     font-size: 1.2em;
-    color: #224066;
+    /* color: #224066; */
+    color: darkblue;
 }
