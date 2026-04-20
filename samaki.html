@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Samaki AI</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            font-size: 0.95em;
+        }
+        th, td {
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+        th {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        pre {
+            background: #f5f5f5;
+            padding: 1em;
+            border-left: 3px solid #473534;
+            overflow-x: auto;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        .section-label {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+        }
+        .cta-link {
+            display: inline-block;
+            margin: 1em 0 1.5em;
+            padding: 10px 22px;
+            border: 2px solid #473534;
+            color: #473534;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+        }
+        .cta-link:hover, .cta-link:visited:hover {
+            background: #473534;
+            color: #fff;
+        }
+        .cta-link:visited {
+            color: #473534;
+        }
+    </style>
+</head>
+<body>
+    <a id="home-link" href="index.html">Home</a> / <a href="projects.html">Projects</a>
+
+    <h2>Samaki AI</h2>
+    <p class="section-label">MIT Sloan Africa Innovation Conference Hackathon, 2025</p>
+
+    <a class="cta-link" href="https://samaki-ai-demo.vercel.app/">View Project &rarr;</a>
+
+    <p>
+        This was my first hackathon. I built Samaki AI with three guys from Ghana — two at MIT,
+        one at Harvard — over a frantic weekend for the MIT Sloan Africa Innovation Conference.
+        The idea: an autonomous fish feeder that watches the fish and decides when and how much
+        to feed, using computer vision instead of a timer.
+    </p>
+    <p>
+        Samaki is Swahili for "fish." The system uses a camera to watch underwater, runs a vision
+        pipeline to pick up on whether the fish are hungry or satisfied, and drives a stepper-motor
+        auger to dispense the right amount of feed. Overfeeding is a real problem in aquaculture —
+        uneaten feed decays and fouls the water — so getting this right actually matters.
+    </p>
+
+    <h3>What I worked on</h3>
+    <p>
+        I ended up spending most of my time on hardware and mechanical design, which honestly was
+        the most fun part for me. I'd only picked up CAD about two weeks before the hackathon —
+        just enough to be dangerous in Onshape — so designing the auger assembly and enclosure
+        was equal parts exciting and humbling. I loved thinking through how the software side
+        would physically manifest: where does the stepper mount, how does the auger tube sit,
+        how do you keep electronics dry near water.
+    </p>
+    <p>
+        The intersection of hardware and software is genuinely interesting to me, and this project
+        was a good first taste of that. It also made me want to go deeper — I left the hackathon
+        curious about electronics in a way I hadn't been before, and it's pushed me to want to
+        properly learn PCB design.
+    </p>
+
+    <h3>The pitch</h3>
+    <p>
+        We stumbled a bit during the presentation — first hackathon nerves, coordination across
+        four people who'd just met, the usual. Something to work on for next time. The building
+        part felt stronger than the pitching part, which I suppose is a decent problem to have.
+    </p>
+
+    <h3>How it works</h3>
+
+    <p><em>Vision pipeline</em></p>
+    <p>
+        YOLOv8/v12 handles detection and tracks individual fish in real time using ByteTrack.
+        A DINOv2-based classifier runs downstream to read behavioral signals — aggregation
+        patterns, surface agitation, opercular movement — as proxies for hunger or satiation.
+        Each frame produces 20+ features logged to <code>tracks.json</code>, which feeds a
+        digital twin and historical growth analysis.
+    </p>
+    <ul>
+        <li><strong>Detection:</strong> YOLOv8 / YOLOv12 + ByteTrack</li>
+        <li><strong>Classification:</strong> DINOv2 fine-tuned for aquatic behavior</li>
+        <li><strong>Runtime:</strong> Python 3.10+, PyTorch, OpenCV</li>
+    </ul>
+
+    <p><em>Hardware</em></p>
+    <p>
+        The mechanical side is built around a 12V helical auger. A Sony IMX327 keeps the
+        pipeline working in low light; a ToF LiDAR monitors how full the hopper is.
+        Power supports both USB-PD and a solar-ready 12V rail for off-grid use.
+    </p>
+
+    <table>
+        <thead>
+            <tr><th>Component</th><th>Specification</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Main Controller</td><td>STM32 (ARM Cortex-M) + ESP32 for IoT telemetry</td></tr>
+            <tr><td>Drive Motor</td><td>NEMA 17 Stepper (High Torque)</td></tr>
+            <tr><td>Feeder Unit</td><td>12V DC Helical Auger Assembly</td></tr>
+            <tr><td>Power Rail</td><td>USB Power Delivery (PD) / 12V Solar-Ready</td></tr>
+            <tr><td>Camera</td><td>Sony IMX327 (Low Light)</td></tr>
+            <tr><td>Level Sensing</td><td>ToF LiDAR (Hopper)</td></tr>
+        </tbody>
+    </table>
+
+    <p><em>Firmware</em></p>
+    <p>
+        The STM32 translates an inferred feed-mass value into stepper steps and pulls the
+        enable line low only during an active dispense cycle to keep heat down.
+    </p>
+<pre>
+void dispenseFeed(float grams) {
+    int steps = calculateSteps(grams);
+    digitalWrite(STEPPER_ENABLE, LOW);
+    for (int i = 0; i < steps; i++) {
+        digitalWrite(STEP_PIN, HIGH);
+        delayMicroseconds(500);
+        digitalWrite(STEP_PIN, LOW);
+        delayMicroseconds(500);
+    }
+    digitalWrite(STEPPER_ENABLE, HIGH);
+}
+</pre>
+
+    <p><em>Other assets</em></p>
+    <ul>
+        <li><strong>CAD:</strong> Full Onshape assembly (GLB export) — NEMA 17 mount, auger tube, weatherproof enclosure.</li>
+        <li><strong>PCB:</strong> 4-layer KiCad stackup with isolated high-power traces for the motor drivers.</li>
+        <li><strong>Code:</strong> Inference pipeline is open-source and designed to be retrained on different species. <a href="https://gist.github.com/eddogola/503581f56d1ae70893491b484d2a8329">main inference pipeline code</a>.</li>
+    </ul>
+</body>
+</html>
