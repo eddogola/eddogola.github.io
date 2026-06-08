@@ -1,5 +1,4 @@
 /* Academic-style layout, adapted from the format used on tanishqkumar.github.io */
-
 body {
   background-color: #faf8f3;
   color: #2b2b2b;
@@ -8,27 +7,19 @@ body {
   margin: 0;
   padding: 0;
 }
-
 a, a:visited {
   color: #473534;
   text-decoration: none;
   border-bottom: 1px solid #c9b8b6;
 }
-
 a:hover {
   color: #271c1b;
   border-bottom-color: #473534;
 }
-
 strong, b {
   font-style: normal;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-/* ol { */
-/*   list-style-type: lower-greek; */
-/* } */
-/**/
 /* Navigation menu */
 #menu {
   float: right;
@@ -38,7 +29,6 @@ strong, b {
   width: 150px;
   font-family: "Georgia", "Times New Roman", serif;
 }
-
 #menu .title {
   display: block;
   margin-bottom: 12px;
@@ -46,32 +36,26 @@ strong, b {
   letter-spacing: 1px;
   color: #271c1b;
 }
-
 #menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
 #menu li {
   margin-bottom: 6px;
 }
-
 #menu li a {
   display: inline-block;
   color: #473534;
   font-size: 13px;
   border-bottom: none;
 }
-
 #menu li a:hover {
   border-bottom: 1px solid #473534;
 }
-
 #menu li a.active {
   font-weight: bold;
 }
-
 /* Left spacer */
 #left {
   height: 1px;
@@ -83,7 +67,6 @@ strong, b {
   margin: 0;
   padding: 0;
 }
-
 /* Content area */
 #content {
   margin-top: 15px;
@@ -93,14 +76,12 @@ strong, b {
   padding: 0 15px;
   box-sizing: border-box;
 }
-
 #content h1, #content h2, #content h3 {
   font-family: "Georgia", "Times New Roman", serif;
   margin: 1.5em 0 0.5em 0;
   color: #1a1a1a;
   font-weight: normal;
 }
-
 #content h1 {
   font-size: 2.2em;
   font-variant: small-caps;
@@ -108,43 +89,35 @@ strong, b {
   border-bottom: 2px solid #c9b8b6;
   padding-bottom: 0.3em;
 }
-
 #content h2 {
   font-size: 1.6em;
   font-style: italic;
 }
-
 #content h3 {
   font-size: 1.3em;
   font-weight: 500;
 }
-
 #content blockquote {
   font-style: italic;
   color: #555;
   margin: 1.5em 0;
 }
-
 #content .byline, #content .note {
   font-size: 0.875em;
   color: #777;
   font-style: italic;
 }
-
 #content p, #content ul, #content ol {
   color: #2b2b2b;
   line-height: 1.6;
 }
-
 #content p {
   text-align: justify;
   hyphens: auto;
 }
-
 #content li {
   margin-bottom: 0.6em;
 }
-
 #content .credit {
   margin-top: 3em;
   padding-top: 1em;
@@ -153,13 +126,49 @@ strong, b {
   color: #888;
   font-style: italic;
 }
-
+/* Contact row */
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 1.4em 0;
+  flex-wrap: wrap;
+}
+.contact .email {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 14px;
+  color: #473534;
+  border-bottom: 1px solid #c9b8b6;
+}
+.contact .email:hover {
+  color: #271c1b;
+  border-bottom-color: #473534;
+}
+.contact-divider {
+  display: inline-block;
+  width: 1px;
+  height: 13px;
+  background-color: #c9b8b6;
+  flex-shrink: 0;
+}
+.contact-links {
+  display: flex;
+  gap: 14px;
+}
+.contact-links a {
+  font-size: 13px;
+  color: #473534;
+  border-bottom: 1px solid #c9b8b6;
+}
+.contact-links a:hover {
+  color: #271c1b;
+  border-bottom-color: #473534;
+}
 /* Mobile styles */
 @media screen and (max-width: 767px) {
   body {
     font-size: 14px;
   }
-
   #menu {
     float: none;
     width: 100%;
@@ -170,47 +179,46 @@ strong, b {
     background-color: #f5f1e8;
     border-bottom: 2px solid #c9b8b6;
   }
-
   #menu .title {
     font-size: 1.3em;
     margin-bottom: 15px;
   }
-
   #menu ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px 15px;
   }
-
   #menu li {
     margin: 0;
   }
-
   #left {
     display: none;
   }
-
   #content {
     float: none;
     width: 100%;
     margin-top: 0;
     padding: 0 20px;
   }
-
   #content p {
     text-align: left;
   }
-
   #content h1 {
     font-size: 1.8em;
   }
-
   #content h2 {
     font-size: 1.4em;
   }
-
   #content h3 {
     font-size: 1.2em;
+  }
+  .contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .contact-divider {
+    display: none;
   }
 }
