@@ -25,10 +25,10 @@ strong, b {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-ol {
-  list-style-type: lower-greek;
-}
-
+/* ol { */
+/*   list-style-type: lower-greek; */
+/* } */
+/**/
 /* Navigation menu */
 #menu {
   float: right;
@@ -66,6 +66,10 @@ ol {
 
 #menu li a:hover {
   border-bottom: 1px solid #473534;
+}
+
+#menu li a.active {
+  font-weight: bold;
 }
 
 /* Left spacer */
