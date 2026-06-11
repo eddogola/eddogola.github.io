@@ -56,6 +56,13 @@ strong, b {
 #menu li a.active {
   font-weight: bold;
 }
+#menu .submenu {
+  margin-top: 6px;
+}
+#menu .submenu li a {
+  font-size: 12px;
+  color: #6b5957;
+}
 /* Left spacer */
 #left {
   height: 1px;
