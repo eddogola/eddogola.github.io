@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="menu">
-        <span class="title">Eddy Ogola</span>
+        <a href="index.html" class="title">Eddy Ogola</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -26,25 +26,27 @@
     <div id="left"></div>
     <div id="content">
 
+    <h1>Bookshelf</h1>
+
     <p>
     Working through pieces across my current ignorance list: economics, history, anthropology, and biology.
     </p>
 
     <h4>2026</h4>
     <ol>
-      <li>Venture Deals, Brad Feld & Jason Mendelson (shelf must-have for founders)</li>
-      <li>Everything is Tuberculosis, John Green</li>
-      <li>The Epigenetics Revolution, Nessa Carey (current read)</li>
-      <li>The Emperor of All Maladies: A Biography of Cancer, Siddharta Mukherjee (current read)</li>
-      <li>The Scaling Book, Reiner Pope</li>
-      <li>Cry, the Beloved Country, Alan Paton (current read)</li>
-      <li>Nexus, Yuval Noah Harari (current read)</li>
-      <li>The Best Short Stories 2025: The O. Henry Prize Winners</li>
+      <li><a href="https://www.amazon.com/Venture-Deals-Smarter-Lawyer-Capitalist/dp/1119594820">Venture Deals, Brad Feld & Jason Mendelson</a> (shelf must-have for founders)</li>
+      <li><a href="https://www.amazon.com/Everything-Tuberculosis-Persistence-Deadliest-Infection/dp/0525556575">Everything is Tuberculosis, John Green</a></li>
+      <li><a href="https://www.amazon.com/Epigenetics-Revolution-Rewriting-Understanding-Inheritance/dp/0231161166">The Epigenetics Revolution, Nessa Carey</a> (current read)</li>
+      <li><a href="https://www.amazon.com/Emperor-All-Maladies-Biography-Cancer/dp/1439170916">The Emperor of All Maladies: A Biography of Cancer, Siddhartha Mukherjee</a> (current read)</li>
+      <li><a href="https://jax-ml.github.io/scaling-book/">The Scaling Book, Reiner Pope</a></li>
+      <li><a href="https://www.amazon.com/Cry-Beloved-Country-Alan-Paton/dp/0743262174">Cry, the Beloved Country, Alan Paton</a> (current read)</li>
+      <li><a href="https://www.amazon.com/Nexus-Brief-History-Information-Networks/dp/059373422X">Nexus, Yuval Noah Harari</a> (current read)</li>
+      <li><a href="https://www.amazon.com/Best-Short-Stories-2025-Winners/dp/0593689607">The Best Short Stories 2025: The O. Henry Prize Winners</a></li>
     </ol>
     <h4>2025</h4>
     <ol>
         <li><a href="https://www.amazon.com/Working-Days-Journals-Grapes-Wrath/dp/0140144579">The Winter of Our Discontent, John Steinbeck</a></li>
-        <li>Martyr, Kaveh Akbar</li>
+        <li><a href="https://www.amazon.com/Martyr-novel-Kaveh-Akbar/dp/0593537610">Martyr!, Kaveh Akbar</a></li>
     </ol>
     <h4>2024</h4>
     <ol>
@@ -85,5 +87,16 @@
         <li><a href="https://www.amazon.com/Mind-Numbers-Science-Flunked-Algebra-ebook/dp/B00G3L19ZUd">A Mind For Numbers</a></li>
     </ul>
     </div>
+<script>
+(function() {
+  var a = document.querySelector("#menu a[href='writing.html']");
+  var li = a.closest("li");
+  if (li.querySelector("a.active")) li.classList.add("open");
+  a.addEventListener("click", function(e) {
+    e.preventDefault();
+    li.classList.toggle("open");
+  });
+})();
+</script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="menu">
-        <span class="title">Eddy Ogola</span>
+        <a href="index.html" class="title">Eddy Ogola</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html" class="active">Projects</a></li>
@@ -26,11 +26,24 @@
     <div id="left"></div>
     <div id="content">
 
+    <h1>Projects</h1>
+
     <ul>
         <li><a href="samaki.html">Samaki AI</a>: Precision aquaculture system for small-scale fish farmers in Africa. Computer vision pipeline (YOLOv8, DINOv2) driving an autonomous auger feeder via STM32 firmware. Currently in prototype.</li>
         <li><a href="https://mljobs.vercel.app">ML jobs platform</a>: A tool to help me find roles in MLE/RE while also tracking my interview preparation. Currently only for myself, but will open it up if it proves useful.</li>
         <li><b>[In Progress] </b><a href="https://momentumnbo.org">Momentum ML Nairobi</a>: 2-week rigorous machine learning bootcamp, for high-achieving Kenyan high-school students, modeled after <a href="https://momentumai.org/">MIT's Momentum AI</a>. Africa needs technologists who understand AI from first principles, not just as consumers. Currently seeking grants and institutional support &mdash; <a href="mailto:eddy.ogola1@gmail.com">get in touch</a></li>
     </ul>
     </div>
+<script>
+(function() {
+  var a = document.querySelector("#menu a[href='writing.html']");
+  var li = a.closest("li");
+  if (li.querySelector("a.active")) li.classList.add("open");
+  a.addEventListener("click", function(e) {
+    e.preventDefault();
+    li.classList.toggle("open");
+  });
+})();
+</script>
 </body>
 </html>

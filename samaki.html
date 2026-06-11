@@ -62,7 +62,7 @@
 </head>
 <body>
     <div id="menu">
-        <span class="title">Eddy Ogola</span>
+        <a href="index.html" class="title">Eddy Ogola</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html" class="active">Projects</a></li>
@@ -185,5 +185,16 @@ void dispenseFeed(float grams) {
         <li><strong>Code:</strong> Inference pipeline is open-source and designed to be retrained on different species. <a href="https://gist.github.com/eddogola/503581f56d1ae70893491b484d2a8329">main inference pipeline code</a>.</li>
     </ul>
     </div>
+<script>
+(function() {
+  var a = document.querySelector("#menu a[href='writing.html']");
+  var li = a.closest("li");
+  if (li.querySelector("a.active")) li.classList.add("open");
+  a.addEventListener("click", function(e) {
+    e.preventDefault();
+    li.classList.toggle("open");
+  });
+})();
+</script>
 </body>
 </html>

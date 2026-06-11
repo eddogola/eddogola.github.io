@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="menu">
-        <span class="title">Eddy Ogola</span>
+        <a href="index.html" class="title">Eddy Ogola</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -26,6 +26,8 @@
     <div id="left"></div>
     <div id="content">
 
+    <h1>Musings</h1>
+
     <blockquote>
         "I sound my barbaric yawp over the roofs of the world." - Walt Whitman
     </blockquote>
@@ -34,5 +36,16 @@
         <li>Apr 23, '24: <a href="musings/04_23_24_birthday.html">Turning 22</a></li>
     </ol>
     </div>
+<script>
+(function() {
+  var a = document.querySelector("#menu a[href='writing.html']");
+  var li = a.closest("li");
+  if (li.querySelector("a.active")) li.classList.add("open");
+  a.addEventListener("click", function(e) {
+    e.preventDefault();
+    li.classList.toggle("open");
+  });
+})();
+</script>
 </body>
 </html>
