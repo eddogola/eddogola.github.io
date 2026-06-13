@@ -1,3 +1,6 @@
+---
+permalink: /musings.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +36,9 @@
     </blockquote>
 
     <ol>
-        <li>Apr 23, '24: <a href="musings/04_23_24_birthday.html">Turning 22</a></li>
+        {% for post in site.posts %}
+        <li>{{ post.date | date: "%b %-d, '%y" }}: <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
     </ol>
     </div>
 <script>

@@ -1,0 +1,6 @@
+title: Eddy Ogola
+url: "https://eddogola.github.io"
+permalink: /musings/:title/
+markdown: kramdown
+kramdown:
+  input: GFM

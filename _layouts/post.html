@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>{{ page.title }} — Eddy Ogola</title>
+</head>
+<body>
+    <div id="menu">
+        <a href="/" class="title">Eddy Ogola</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/coursework.html">Coursework</a></li>
+            <li><a href="/books.html">Bookshelf</a></li>
+            <li><a href="/writing.html">Writing</a>
+                <ul class="submenu">
+                    <li><a href="/poetry.html">Poetry</a></li>
+                    <li><a href="/musings.html" class="active">Musings</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="left">
+        <nav id="toc-sidebar">
+            <p class="toc-label">Contents</p>
+            <ol id="toc-list"></ol>
+        </nav>
+    </div>
+    <div id="content">
+        <a href="/musings.html" class="post-back">&larr; musings</a>
+        <article class="post">
+            <header class="post-header">
+                <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+                <h1 class="post-title">{{ page.title }}</h1>
+            </header>
+            <div class="post-body">
+                {{ content }}
+            </div>
+        </article>
+    </div>
+<script>
+(function() {
+  var a = document.querySelector("#menu a[href='/writing.html']");
+  var li = a.closest("li");
+  li.classList.add("open");
+  a.addEventListener("click", function(e) {
+    e.preventDefault();
+    li.classList.toggle("open");
+  });
+})();
+
+(function() {
+  var headings = document.querySelectorAll('.post-body h2, .post-body h3');
+  var sidebar  = document.getElementById('toc-sidebar');
+  var tocList  = document.getElementById('toc-list');
+  if (headings.length === 0) { sidebar.style.display = 'none'; return; }
+
+  var headingEls = Array.from(headings);
+  headingEls.forEach(function(h, i) {
+    if (!h.id) h.id = 'section-' + i;
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    tocList.appendChild(li);
+  });
+
+  var links = Array.from(tocList.querySelectorAll('a'));
+
+  function setActive() {
+    var current = null;
+    headingEls.forEach(function(h) {
+      if (h.getBoundingClientRect().top < window.innerHeight * 0.75) current = h;
+    });
+    links.forEach(function(l) { l.classList.remove('toc-active'); });
+    if (current) {
+      var active = tocList.querySelector('a[href="#' + current.id + '"]');
+      if (active) active.classList.add('toc-active');
+    }
+  }
+
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+})();
+</script>
+</body>
+</html>
